@@ -1,4 +1,3 @@
-# Smartcontract
 SmartContract
 This Solidity smart contract is a simple example demonstrating the use of require, assert, and revert statements to handle various conditions and errors.
 
