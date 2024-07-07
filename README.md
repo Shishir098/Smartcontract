@@ -1,45 +1,56 @@
 SmartContract
-Overview
-This project showcases a simple Ethereum smart contract that implements the require(), assert(), and revert() statements to handle input validation, invariant checks, and exceptional situations. The contract ensures secure operations on numerical values by enforcing certain conditions and providing error handling to prevent unexpected behavior.
+This Solidity smart contract is a simple example demonstrating the use of require, assert, and revert statements to handle various conditions and errors.
 
-Functionality
-The smart contract includes the following functions:
+Contract Overview
+The SmartContract contract has the following functionalities:
 
-setValueWithRequirement(uint _value): Allows setting the value of a state variable, ensuring that the value is greater than zero using the require() statement.
+Set a value with a requirement check.
+Set a value with an assertion check.
+Withdraw the current value with a revert condition.
+Functions
+setValueWithRequirement
+solidity
+Copy code
+function setValueWithRequirement(uint _value) external
+Description: Sets the value state variable to the provided _value if _value is greater than zero. If _value is zero or less, the transaction is reverted with an error message "Value must be greater than zero."
+Parameters:
+uint _value: The new value to set. Must be greater than zero.
+Usage:
+solidity
+Copy code
+contractInstance.setValueWithRequirement(10);
+setValueWithAssertion
+solidity
+Copy code
+function setValueWithAssertion(uint _newValue) external
+Description: Attempts to set the value state variable to _newValue only if the difference between _newValue and the current value is greater than zero and equal to the current value. If this assertion fails, the transaction is reverted.
+Parameters:
+uint _newValue: The new value to set. The difference between _newValue and the current value must be greater than zero and equal to the current value.
+Usage:
+solidity
+Copy code
+contractInstance.setValueWithAssertion(20);
+withdrawWithRevert
+solidity
+Copy code
+function withdrawWithRevert() external
+Description: Attempts to withdraw the current value. It first sets amount to the current value, then resets value to zero. If amount is zero, it reverts the transaction with the error message "Withdraw reverted. Amount is Zero."
+Usage:
+solidity
+Copy code
+contractInstance.withdrawWithRevert();
+Deployment
+Ensure you have Solidity and a suitable development environment installed (e.g., Remix, Truffle, or Hardhat).
+Compile the SmartContract contract.
+Deploy the contract to your desired Ethereum network.
+Interact with the deployed contract using the provided functions.
+Example
+Here's an example of how to interact with the contract using Remix:
 
-setValueWithAssertion(uint _newValue): Doubles the value of a state variable and verifies the new value satisfies a specific invariant condition using the assert() statement.
-
-withdrawWithRevert(): Transfers the entire value of the state variable to the caller and handles specific cases, such as when the value is zero, using the revert() statement.
-
-Getting Started
-Prerequisites
-To interact with the smart contract, you need an Ethereum development environment, such as Remix IDE, and an Ethereum wallet to fund the transactions.
-
-Deploying the Contract
-Clone this repository to your local machine or use the provided Gitpod link to open the project in an online IDE.
-
-Open the SmartContract.sol file in your Ethereum development environment.
-
-Compile the contract to check for any compilation errors.
-
-Deploy the contract to an Ethereum network of your choice (local or testnet) using the development environment's deployment tools.
-
-Interacting with the Contract
-Once the contract is deployed, you can interact with it through its functions:
-
-Call setValueWithRequirement(_value) to set a new numerical value, ensuring it is greater than zero.
-
-Call setValueWithAssertion(_newValue) to double the current value and verify the invariant condition.
-
-Call withdrawWithRevert() to withdraw the entire value and handle exceptional cases.
-
-Security Considerations
-The contract is designed for educational purposes and may not be suitable for production use without further security audits and enhancements. Always exercise caution when deploying smart contracts to production networks.
-
-Author
-Shishir Gautam
-
-GitHub: https://github.com/Shishir098
-Email: shishirgautam12345@gmail.com
+Open Remix and create a new file named SmartContract.sol.
+Copy and paste the contract code into the file.
+Compile the contract.
+Deploy the contract.
+Use the deployed contract instance to call setValueWithRequirement, setValueWithAssertion, and withdrawWithRevert functions.
 License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
