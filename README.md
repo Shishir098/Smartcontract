@@ -44,13 +44,7 @@ Ensure you have Solidity and a suitable development environment installed (e.g.,
 Compile the SmartContract contract.
 Deploy the contract to your desired Ethereum network.
 Interact with the deployed contract using the provided functions.
-Example
-Here's an example of how to interact with the contract using Remix:
 
-Open Remix and create a new file named SmartContract.sol.
-Copy and paste the contract code into the file.
-Compile the contract.
-Deploy the contract.
-Use the deployed contract instance to call setValueWithRequirement, setValueWithAssertion, and withdrawWithRevert functions.
+
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
